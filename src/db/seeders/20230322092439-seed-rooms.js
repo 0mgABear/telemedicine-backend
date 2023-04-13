@@ -4,37 +4,29 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      "doctors",
+      "rooms",
       [
         {
-          full_name: "Yeo Yi",
-          specialty_id: 4,
-          mcr: "M123321",
-          email: "yeoyi94@gmail.com",
+          doctor_id: 1,
+          patient_id: 1,
           created_at: new Date(),
           updated_at: new Date(),
         },
         {
-          full_name: "Aadon Ang",
-          specialty_id: 1,
-          mcr: "M123456",
-          email: "aadon_ang@gmail.com",
+          doctor_id: 1,
+          patient_id: 2,
           created_at: new Date(),
           updated_at: new Date(),
         },
         {
-          full_name: "Brandon Boo",
-          specialty_id: 2,
-          mcr: "M234567",
-          email: "brandon_boog@gmail.com",
+          doctor_id: 2,
+          patient_id: 1,
           created_at: new Date(),
           updated_at: new Date(),
         },
         {
-          full_name: "Charles Chan",
-          specialty_id: 3,
-          mcr: "M345678",
-          email: "charles_chan@gmail.com",
+          doctor_id: 2,
+          patient_id: 2,
           created_at: new Date(),
           updated_at: new Date(),
         },
@@ -44,6 +36,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("doctors", null, {});
+    await queryInterface.bulkDelete("rooms", null, {});
   },
 };

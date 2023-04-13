@@ -1,16 +1,31 @@
 const express = require("express");
+const app = express();
+
+
+const { createServer } = require("http");
+const http = createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(http,{
+  cors: {
+    origin: "http://localhost:3001",
+    methods: ["GET", "POST","PUT","DELETE"],
+  }
+});
+const PORT = process.env.PORT || 3000;
 const cors = require("cors");
-require("dotenv").config();
 const { errorHandler } = require("./middleware");
 const appRouter = require("./routers");
+const { initializeSockets } = require("./sockets");
+require("dotenv").config();
 
-const PORT = process.env.PORT;
-const app = express();
 app.use(cors());
 app.use(express.json());
 
 app.use(appRouter);
 app.use(errorHandler);
-app.listen(PORT, () => {
+initializeSockets(io);
+
+http.listen(PORT, () => {
   console.log(`Express app listening on port ${PORT}!`);
 });
+

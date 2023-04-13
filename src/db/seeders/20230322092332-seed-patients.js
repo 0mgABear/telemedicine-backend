@@ -18,6 +18,8 @@ module.exports = {
           address: "Blk 123 JJ North Road",
           postal_code: 123123,
           email: "frostarcher7@gmail.com",
+          created_at: new Date(),
+          updated_at: new Date(),
         },
         {
           first_name: "Ah Kow",
@@ -31,6 +33,8 @@ module.exports = {
           address: "Blk 456 South Road",
           postal_code: 123456,
           email: "tanahkow@gmail.com",
+          created_at: new Date(),
+          updated_at: new Date(),
         },
         {
           first_name: "Ah Beng",
@@ -45,6 +49,8 @@ module.exports = {
           address: "Blk 789 West Road",
           postal_code: 123789,
           email: "sohahbeng@gmail.com",
+          created_at: new Date(),
+          updated_at: new Date(),
         },
       ],
       {}
