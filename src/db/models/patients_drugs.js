@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "patients",
+      modelName: "patients_drugs",
       underscored: true,
     }
   );

@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       ic_number: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       age: {
         type: Sequelize.INTEGER,
