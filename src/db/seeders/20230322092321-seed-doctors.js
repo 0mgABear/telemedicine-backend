@@ -7,14 +7,6 @@ module.exports = {
       "doctors",
       [
         {
-          full_name: "Yeo Yi",
-          specialty_id: 4,
-          mcr: "M123321",
-          email: "yeoyi94@gmail.com",
-          created_at: new Date(),
-          updated_at: new Date(),
-        },
-        {
           full_name: "Aadon Ang",
           specialty_id: 1,
           mcr: "M123456",
@@ -35,6 +27,14 @@ module.exports = {
           specialty_id: 3,
           mcr: "M345678",
           email: "charles_chan@gmail.com",
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+        {
+          full_name: "Ang Boon Ching",
+          specialty_id: 4,
+          mcr: "M123321",
+          email: "drabchealthathand@gmail.com",
           created_at: new Date(),
           updated_at: new Date(),
         },
