@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
   drugs.init(
     {
       name: DataTypes.STRING,
-      max_dose: DataTypes.INTEGER,
+      max_dose_per_frequency: DataTypes.INTEGER,
+      max_dose_per_day: DataTypes.INTEGER,
       unit: DataTypes.STRING,
     },
     {

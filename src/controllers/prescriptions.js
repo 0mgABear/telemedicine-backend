@@ -18,4 +18,36 @@ module.exports = {
     });
     return res.json(patientPrescriptions);
   },
+  async createPrescription(req, res) {
+    const { body: payload } = req;
+    payload.dose = payload.dose + "mg";
+    payload.doctorId = +payload.doctor_id;
+    payload.patientId = +payload.patient_id;
+
+    if (payload.frequency === 0) {
+      payload.frequency = "PRN";
+    } else if (payload.frequency === 1) {
+      payload.frequency = "ON";
+    } else if (payload.frequency === 2) {
+      payload.frequency = "BD";
+    } else if (payload.frequency === 3) {
+      payload.frequency = "TDS";
+    } else if (payload.frequency === 4) {
+      payload.frequency = "QDS";
+    } else if (payload.frequency === 6) {
+      payload.frequency = "4 hourly";
+    } else if (payload.frequency === 12) {
+      payload.frequency = "2 hourly";
+    }
+
+    const currentDate = new Date();
+
+    const newPrescription = await prescriptions.create({
+      ...payload,
+      created_at: currentDate,
+      updated_at: currentDate,
+    });
+
+    return res.json(newPrescription);
+  },
 };

@@ -12,5 +12,6 @@ prescriptionsRouter.get(
   "/prescriptions/patient/:doctor_id/:patient_id",
   prescriptionsController.getAllPrescriptionsOfPatientByDoctor
 );
+prescriptionsRouter.post("/createprescription", prescriptionsController.createPrescription);
 
 module.exports = prescriptionsRouter;
