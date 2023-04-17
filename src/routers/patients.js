@@ -11,5 +11,11 @@ patientsRouter.get(
   "/patients/:user_email",
   patientsController.getLoggedInPatientProfile
 );
+patientsRouter.get(
+  "/patientid/:patient_id",
+  patientsController.getPatientUsingId
+);
+patientsRouter.post("/createpatient", patientsController.createPatient);
+patientsRouter.put("/editpatient/:user_email", patientsController.editPatient);
 
 module.exports = patientsRouter;

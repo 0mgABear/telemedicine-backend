@@ -1,7 +1,6 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
   class doctors extends Model {
     /**
@@ -9,8 +8,9 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({specialties}) {
+    static associate({ specialties, patients }) {
       this.belongsTo(specialties);
+      this.belongsToMany(patients, { through: "prescriptions" });
     }
   }
   doctors.init(
