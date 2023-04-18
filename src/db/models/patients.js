@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       postal_code: DataTypes.INTEGER,
       medical_history: DataTypes.STRING,
       email: DataTypes.STRING,
+      drug_allergy: DataTypes.STRING,
     },
     {
       sequelize,

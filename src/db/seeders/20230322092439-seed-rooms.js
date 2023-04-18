@@ -30,6 +30,12 @@ module.exports = {
           created_at: new Date(),
           updated_at: new Date(),
         },
+        {
+          doctor_id: 4,
+          patient_id: 1,
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
       ],
       {}
     );
