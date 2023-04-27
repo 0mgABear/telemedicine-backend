@@ -7,7 +7,6 @@ module.exports = {
   initializeSockets(io){
 
     io.on("connection", async (socket) => {
-      let chatroom = 1;
 
       socket.on("subscribe", async (doctorNumber, patientNumber) => {
 
@@ -23,7 +22,7 @@ module.exports = {
 
         // todo: send back room and messages object
         // emitting event back to app.js to change room name HTML
-        io.to(chatroom).emit("joinRoom", { roomnow, messages });
+        io.emit("joinRoom", { roomnow, messages });
       });
 
       socket.on("chatMessage", async (data) => {
@@ -34,7 +33,7 @@ module.exports = {
         console.log(sender + " says: " + message);
 
         await messageService.createMessage(room, sender, message);
-        io.to(chatroom).emit("chatMessage", data);
+        io.emit("chatMessage", data);
       });
     });
   },

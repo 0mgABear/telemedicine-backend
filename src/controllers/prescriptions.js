@@ -10,9 +10,33 @@ module.exports = {
     return res.json(retrievePrescriptions);
   },
   async getAllPrescriptionsOfPatientByDoctor(req, res) {
+    // const patientPrescriptions = [];
     const patientPrescriptions = await prescriptions.findAll({
       where: {
         doctor_id: req.params.doctor_id,
+        patient_id: req.params.patient_id,
+      },
+      // this lengthy attributes method is needed as 'id' isn't retrieved using the normal code as shown above
+      attributes: [
+        "id",
+        "doctor_id",
+        "patient_id",
+        "diagnosis",
+        "drug_name",
+        "dose",
+        "frequency",
+        "remarks",
+        "delivered",
+        "created_at",
+        "updated_at",
+      ],
+    });
+
+    return res.json(patientPrescriptions);
+  },
+  async getAllPrescriptionsOfPatient(req, res) {
+    const patientPrescriptions = await prescriptions.findAll({
+      where: {
         patient_id: req.params.patient_id,
       },
     });
@@ -20,7 +44,12 @@ module.exports = {
   },
   async createPrescription(req, res) {
     const { body: payload } = req;
-    payload.dose = payload.dose + "mg";
+    if (payload.drug_name === "vitamin D") {
+      payload.dose = payload.dose + "IU";
+    } else {
+      payload.dose = payload.dose + "mg";
+    }
+
     payload.doctorId = +payload.doctor_id;
     payload.patientId = +payload.patient_id;
 
@@ -49,5 +78,13 @@ module.exports = {
     });
 
     return res.json(newPrescription);
+  },
+  async deletePrescription(req, res) {
+    const deleteResult = await prescriptions.destroy({
+      where: {
+        id: req.params.singlePrescription,
+      },
+    });
+    return res.json(deleteResult);
   },
 };
